@@ -1,14 +1,13 @@
-﻿$(function () {
+$(function () {
 
-    // A slider with a step of 1
-    $("#slider").slider({
+    // A slider containing 5 steps with an increment of 1
+    $("#navSlider").slider({
         value: 1,
         min: 1,
         max: 5,
         step: 1,
         change: function (event, ui) {
-            //var val = $('#slider').slider("option", "value");
-            $('#detailsDIV').load("/home/step" + ui.value);
+            $('#contentDIV').load("/home/step" + ui.value);
         }
     })
    .each(function () {
@@ -28,20 +27,10 @@
            // Create a new element and position it with percentages
            var el = $('<label >' + (i + opt.min) + '</label>').css('left', (i / vals * 100) + '%');
 
-           // Add the element inside #slider
-           $("#slider").append(el);
+           // Add the element inside #navSlider
+           $("#navSlider").append(el);
        }
    });
-
-    /*
-                $('.js-reload-details').on('click', function (evt) {
-                    evt.preventDefault();
-                    evt.stopPropagation();
-    
-                    var url = $(this).data('url');
-                    $('#detailsDIV').load(url);
-                });
-    */
-    $('#detailsDIV').load("/home/step1");
+   
+    $('#contentDIV').load("/home/step1");
 });
-
